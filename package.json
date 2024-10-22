@@ -7,9 +7,10 @@
     "node": ">=22.9.0"
   },
   "scripts": {
-    "start": "node ./index.js",
-    "start:dev": "nodemon ./index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "npm run build && node dist/index.cjs",
+    "start:dev": "tsx src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
   },
   "author": "Andrei Auchynnikau",
   "keywords": [],

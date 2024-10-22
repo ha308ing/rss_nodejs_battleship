@@ -19,6 +19,16 @@ export default {
         },
     },
     module: {
-        rules: [{ test: /\.ts$/, loader: "ts-loader" }],
+        rules: [
+            {
+                test: /\.ts$/,
+                loader: "ts-loader",
+                options: {
+                    compilerOptions: {
+                        noEmit: false,
+                    },
+                },
+            },
+        ],
     },
 };

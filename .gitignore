@@ -17,5 +17,6 @@ npm-debug.log
 
 
 pr.md
-dist
-front
+/dist
+/front
+/ts-out

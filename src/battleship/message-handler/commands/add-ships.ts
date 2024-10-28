@@ -11,11 +11,13 @@ export interface IAddShips extends IMessage {
 type TFnAddShips = (inputData: IAddShips["data"]) => void;
 
 export const addShips: TFnAddShips = ({ gameId, ships, indexPlayer }) => {
-    const game = games.getGame(gameId);
+    try {
+        const game = games.getGame(gameId);
 
-    game.addShips(indexPlayer, ships);
+        game.addShips(indexPlayer, ships);
 
-    if (!game.isReady) return;
+        if (!game.isReady) return;
 
-    startGame(gameId);
+        startGame(gameId);
+    } catch (error) {}
 };

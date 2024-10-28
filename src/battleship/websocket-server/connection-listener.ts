@@ -1,6 +1,7 @@
 import { WebSocket } from "ws";
-import { clients, games, players, rooms } from "@/battleship/entities";
+import { clients } from "@/battleship/entities";
 import { createMessageHandler } from "@/battleship/message-handler";
+import { closeListener } from "./close-listener";
 
 export const connectionListener = (ws: WebSocket) => {
     const [index] = clients.add(ws);
@@ -9,6 +10,8 @@ export const connectionListener = (ws: WebSocket) => {
     console.log("New connection: %s", index);
 
     ws.on("message", messageHandler);
+
+    ws.on("close", closeListener(index));
 
     ws.pong();
 };

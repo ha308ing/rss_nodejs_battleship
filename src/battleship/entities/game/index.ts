@@ -218,6 +218,7 @@ export class Game implements IGame {
         if (playerIndex == null) return;
 
         const player = players.getPlayer(playerIndex);
+        this.winPlayer = playerIndex;
 
         player.wins++;
     }

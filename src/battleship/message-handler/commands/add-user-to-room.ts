@@ -1,4 +1,4 @@
-import { IMessage } from "@/battleship/types";
+import type { IMessage } from "@/battleship/types";
 import { MESSAGE_TYPE } from "@/battleship/constants";
 import { clients, rooms } from "@/battleship/entities";
 import { createGame } from "./create-game";

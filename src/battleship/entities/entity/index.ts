@@ -1,4 +1,6 @@
-import { generateIndex } from "@/battleship/utils";
+import { randomUUID } from "node:crypto";
+
+export const generateIndex = () => randomUUID().replace(/-/g, "");
 
 export class Entity<T> {
     _entities: Map<string, T>;

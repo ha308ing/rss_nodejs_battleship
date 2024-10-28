@@ -1,5 +1,5 @@
 import { clients, games } from "@/battleship/entities";
-import { IMessage } from "@/battleship/types";
+import type { IMessage } from "@/battleship/types";
 import { MESSAGE_TYPE } from "@/battleship/constants";
 
 export interface ITurnOut extends IMessage {

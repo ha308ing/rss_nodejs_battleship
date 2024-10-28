@@ -1,4 +1,4 @@
-import { IMessage } from "@/battleship/types";
+import type { IMessage } from "@/battleship/types";
 import { clients, games } from "@/battleship/entities";
 import { MESSAGE_TYPE } from "@/battleship/constants";
 import { updateWinners } from "./update-winners";

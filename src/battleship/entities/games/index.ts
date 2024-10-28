@@ -1,5 +1,5 @@
 import { Entity } from "../entity";
-import { IRoom, rooms } from "../rooms";
+import type { IRoom } from "../rooms";
 import { Game } from "../game";
 import { MESSAGES } from "@/battleship/constants";
 import { players } from "../players";

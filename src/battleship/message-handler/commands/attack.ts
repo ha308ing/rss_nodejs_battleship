@@ -1,6 +1,6 @@
 import type { IMessage, IPoint } from "@/battleship/types";
 import { MESSAGE_TYPE } from "@/battleship/constants";
-import { clients, games, TAttackStatus } from "@/battleship/entities";
+import { clients, games, type TAttackStatus } from "@/battleship/entities";
 import { turn } from "./turn";
 import { finish } from "./finish";
 

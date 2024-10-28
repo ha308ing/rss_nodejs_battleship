@@ -1,7 +1,7 @@
 import { attack } from "./attack";
 import { games } from "@/battleship/entities";
 import { MESSAGE_TYPE } from "@/battleship/constants";
-import { IMessage } from "@/battleship/types";
+import type { IMessage } from "@/battleship/types";
 
 export interface IRandomAttack extends IMessage {
     type: typeof MESSAGE_TYPE.RANDOM_ATTACK;

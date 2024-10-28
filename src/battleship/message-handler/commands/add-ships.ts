@@ -1,6 +1,6 @@
 import { MESSAGE_TYPE } from "@/battleship/constants";
-import { IMessage } from "@/battleship/types";
-import { games, IShip } from "@/battleship/entities";
+import type { IMessage } from "@/battleship/types";
+import { games, type IShip } from "@/battleship/entities";
 import { startGame } from "./start-game";
 
 export interface IAddShips extends IMessage {

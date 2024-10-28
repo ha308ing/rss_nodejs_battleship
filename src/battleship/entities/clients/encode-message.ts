@@ -4,17 +4,9 @@ import type {
     IRegOut,
     IStartGameOut,
     ITurnOut,
+    IFinishOut,
 } from "@/battleship/message-handler/commands";
-import { IFinishOut } from "@/battleship/message-handler/commands";
 import type { MESSAGE_TYPE, TMessageType } from "@/battleship/constants";
-
-type TOutgoingMessage =
-    | IAttackOut
-    | ICreateGameOut
-    | IFinishOut
-    | IRegOut
-    | IStartGameOut
-    | ITurnOut;
 
 type TDataOut<T> = T extends typeof MESSAGE_TYPE.ATTACK
     ? IAttackOut["data"]

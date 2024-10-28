@@ -1,4 +1,4 @@
-import { IShip } from ".";
+import type { IShip } from ".";
 import { formatCoordinates } from "./format-coordinates";
 import { getSurroundingCells } from "./get-surrounding-cells";
 

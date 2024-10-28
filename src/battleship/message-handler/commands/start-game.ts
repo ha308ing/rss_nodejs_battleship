@@ -1,6 +1,6 @@
 import { MESSAGE_TYPE } from "@/battleship/constants";
-import { clients, games, TShipType } from "@/battleship/entities";
-import { IMessage } from "@/battleship/types";
+import { clients, games, type TShipType } from "@/battleship/entities";
+import type { IMessage } from "@/battleship/types";
 
 export interface IStartGameOut extends IMessage {
     type: typeof MESSAGE_TYPE.START_GAME;

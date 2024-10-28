@@ -1,4 +1,4 @@
-import { WebSocket } from "ws";
+import type { WebSocket } from "ws";
 import { clients } from "@/battleship/entities";
 import { createMessageHandler } from "@/battleship/message-handler";
 import { closeListener } from "./close-listener";

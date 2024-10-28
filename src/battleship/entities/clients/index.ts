@@ -82,6 +82,10 @@ export class Clients extends Entity<WebSocket> {
 
         return gameClients;
     }
+
+    _getPrintData() {
+        return Array.from(this._entities.keys());
+    }
 }
 
 export const clients = new Clients("Clients");

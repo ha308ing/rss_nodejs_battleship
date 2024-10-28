@@ -29,6 +29,9 @@ export class Entity<T> {
 
         this._entities.set(index, item);
 
+        console.log("New entry in %s", this._name);
+        this.print();
+
         return [index, item];
     }
 
@@ -62,7 +65,12 @@ export class Entity<T> {
         }
     }
 
+    _getPrintData(): unknown {
+        return "";
+    }
+
     print() {
-        console.log(this._entities);
+        const printData = this._getPrintData();
+        console.table(printData);
     }
 }

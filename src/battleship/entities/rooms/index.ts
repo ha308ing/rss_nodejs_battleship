@@ -51,6 +51,16 @@ export class Rooms extends Entity<IRoom> {
 
         return room;
     }
+
+    _getPrintData() {
+        return Array.from(this._entities.entries()).map(
+            ([index, { roomUsers }]) => {
+                const [host] = roomUsers;
+
+                return { index, Host: host.name };
+            }
+        );
+    }
 }
 
 export const rooms = new Rooms("Rooms");

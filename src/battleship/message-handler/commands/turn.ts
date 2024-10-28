@@ -22,4 +22,7 @@ export const turn = (gameIndex: string) => {
     clients.send(client2Index, MESSAGE_TYPE.TURN, {
         currentPlayer: game.turnIndex,
     });
+
+    console.log("Turn");
+    games.print();
 };

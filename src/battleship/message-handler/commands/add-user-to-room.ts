@@ -17,9 +17,6 @@ type TFnAddUser = (
 ) => void;
 
 export const addUserToRoom: TFnAddUser = ({ indexRoom }, connectionIndex) => {
-    const playerIndex = clients.playersIndex.get(connectionIndex);
-    console.log("add user %s to room %s", playerIndex, indexRoom);
-
     const success = rooms.addPlayerToRoom(indexRoom, connectionIndex);
     if (!success) return;
 

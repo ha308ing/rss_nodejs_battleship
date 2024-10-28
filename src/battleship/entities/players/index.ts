@@ -108,6 +108,12 @@ export class Players extends Entity<IPlayer> {
             throw new Error(MESSAGES.ERROR_PLAYER_NOT_FOUND);
         return player;
     }
+
+    _getPrintData() {
+        return Array.from(this._entities.entries()).map(
+            ([index, { name }]) => ({ index, name })
+        );
+    }
 }
 
 export const players = new Players("Players");

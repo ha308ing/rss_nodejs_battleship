@@ -5,6 +5,7 @@ import type {
     ICreateRoom,
     IReg,
     IRandomAttack,
+    ISinglePlay,
 } from "@/battleship/message-handler/commands";
 
 type TIncomingMessage =
@@ -13,7 +14,8 @@ type TIncomingMessage =
     | IAddUserToRoom
     | IAddShips
     | IAttack
-    | IRandomAttack;
+    | IRandomAttack
+    | ISinglePlay;
 
 export const decodeMessage = (message: string): TIncomingMessage => {
     let { type, data: inputData } = JSON.parse(message);

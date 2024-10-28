@@ -38,6 +38,10 @@ export const createMessageHandler = (connectionIndex: string) => {
                 commands.updateWinners();
                 break;
             }
+            case MESSAGE_TYPE.SINGLE_PLAY: {
+                commands.singlePlay(connectionIndex);
+                break;
+            }
         }
     };
 };

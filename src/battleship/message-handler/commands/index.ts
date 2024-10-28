@@ -10,3 +10,4 @@ export * from "./start-game";
 export * from "./turn";
 export * from "./update-room";
 export * from "./update-winners";
+export * from "./single-play";

@@ -11,6 +11,7 @@ export const MESSAGE_TYPE = {
     ATTACK: "attack",
     RANDOM_ATTACK: "randomAttack",
     FINISH: "finish",
+    SINGLE_PLAY: "single_play",
 } as const;
 
 export type TMessageType = (typeof MESSAGE_TYPE)[keyof typeof MESSAGE_TYPE];

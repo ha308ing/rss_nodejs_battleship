@@ -225,7 +225,7 @@ export class Game implements IGame {
 
     randomAttack(playerIndex: string) {
         const randomShots = this.randomShots[this.turnIndex];
-
+        if (randomShots.length == 0) return { x: 0, y: 0 };
         const randomIndex = randomInt(0, randomShots.length);
         const randomShot = randomShots[randomIndex];
         if (randomShot == undefined)

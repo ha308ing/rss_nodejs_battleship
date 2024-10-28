@@ -1,10 +1,12 @@
-import { MESSAGE_TYPE, TMessageType } from "@/battleship/constants";
+import { MESSAGE_TYPE } from "@/battleship/constants";
 import { WebSocket } from "ws";
-import { createRoom } from "./create-room";
+import { createRoom } from "@/battleship/message-handler/commands";
 import "dotenv/config";
+import { encodeMessage } from "@/battleship/entities/clients/encode-message";
+import { decodeMessage } from "@/battleship/message-handler/decode-message";
 
-const { PORT } = process.env;
-const wsHost = "http://localhost:" + PORT;
+const { PORT_WS } = process.env;
+const wsHost = "http://localhost:" + PORT_WS;
 
 export interface ISinglePlay {
     type: typeof MESSAGE_TYPE.SINGLE_PLAY;
@@ -17,58 +19,41 @@ export const singlePlay = (connectionIndex: string) => {
     const botWebSocket = new WebSocket(wsHost);
     botWebSocket.on("open", () => {
         botWebSocket.send(
-            JSON.stringify({
-                type: MESSAGE_TYPE.REG,
-                data: JSON.stringify({ name: "bot", password: "bot" }),
-            })
+            encodeMessage(MESSAGE_TYPE.REG, { name: "bot", password: "bot" })
         );
+
         createRoom(connectionIndex);
+
         botWebSocket.send(
-            JSON.stringify({
-                id: 0,
-                type: MESSAGE_TYPE.ADD_USER_TO_ROOM,
-                data: JSON.stringify({
-                    indexRoom: connectionIndex,
-                }),
+            encodeMessage(MESSAGE_TYPE.ADD_USER_TO_ROOM, {
+                indexRoom: connectionIndex,
             })
         );
+
         botWebSocket.on("message", (message) => {
-            let data;
-            const { type, data: dataString } = JSON.parse(message.toString());
-            try {
-                data = JSON.parse(dataString);
-            } catch (error) {
-                data = dataString;
-            }
-            console.log({ type, data });
+            const { type, data } = decodeMessage(message.toString()) as {
+                type: string;
+                data: any;
+            };
 
             switch (type) {
                 case MESSAGE_TYPE.CREATE_GAME: {
                     botIndex = data.idPlayer;
                     gameId = data.idGame;
-                    console.log({ botIndex, data });
                     botWebSocket.send(
-                        JSON.stringify({
-                            id: 0,
-                            type: MESSAGE_TYPE.ADD_SHIPS,
-                            data: JSON.stringify({
-                                ships: botShips,
-                                gameId: data.idGame,
-                                indexPlayer: botIndex,
-                            }),
+                        encodeMessage(MESSAGE_TYPE.ADD_SHIPS, {
+                            ships: botShips,
+                            gameId: data.idGame,
+                            indexPlayer: botIndex,
                         })
                     );
                     break;
                 }
                 case MESSAGE_TYPE.ATTACK: {
                     botWebSocket.send(
-                        JSON.stringify({
-                            id: 0,
-                            type: MESSAGE_TYPE.RANDOM_ATTACK,
-                            data: JSON.stringify({
-                                gameId: gameId,
-                                indexPlayer: botIndex,
-                            }),
+                        encodeMessage(MESSAGE_TYPE.RANDOM_ATTACK, {
+                            gameId: gameId,
+                            indexPlayer: botIndex,
                         })
                     );
                     break;

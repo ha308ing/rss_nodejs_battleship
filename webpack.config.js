@@ -13,16 +13,21 @@ export default {
     target: ["es6", "node22.9"],
     mode: "production",
     resolve: {
-        extensions: [".ts"],
+        extensions: [".ts", ".js", ".mjs", ".cjs"],
         alias: {
             "@": resolve(__dirname, "src"),
         },
+    },
+    externals: {
+        bufferutil: "bufferutil",
+        "utf-8-validate": "utf-8-validate",
     },
     module: {
         rules: [
             {
                 test: /\.ts$/,
                 loader: "ts-loader",
+                exclude: /node_modules/,
                 options: {
                     compilerOptions: {
                         noEmit: false,
